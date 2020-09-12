@@ -90,6 +90,10 @@ func process(dst interface{}, src interface{}, args ...Options) error {
 			dstFieldName                = srcFieldName
 			tagOptions                  TagOptions
 		)
+		// 跳过零值
+		if srcFieldValue.IsZero() || srcFieldValue.IsNil() {
+			continue
+		}
 
 		if !srcFieldFound {
 			continue
