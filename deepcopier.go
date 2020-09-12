@@ -91,8 +91,12 @@ func process(dst interface{}, src interface{}, args ...Options) error {
 			tagOptions                  TagOptions
 		)
 		// 跳过零值
-		if srcFieldValue.IsZero() {
+		if srcFieldType.Type.Kind() == reflect.Ptr && srcFieldValue.IsNil() {
 			continue
+		} else {
+			if srcFieldValue.IsZero() {
+				continue
+			}
 		}
 
 		if !srcFieldFound {
