@@ -91,7 +91,7 @@ func process(dst interface{}, src interface{}, args ...Options) error {
 			tagOptions                  TagOptions
 		)
 		// 跳过零值
-		if srcFieldValue.IsZero() || srcFieldValue.IsNil() {
+		if srcFieldValue.IsZero() {
 			continue
 		}
 
